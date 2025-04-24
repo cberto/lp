@@ -1,1 +1,3 @@
 # TP 3
+
+Armar la GIC, BNF, EBNF y ABNF para UN LENGUAJE ESOTÉRICO
