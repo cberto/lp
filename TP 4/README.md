@@ -34,10 +34,3 @@ Este diagrama incluye:
 
 
 
-
----
-
-## 🔖 Licencia
-
-Este material puede ser reutilizado y adaptado libremente con atribución al autor del diagrama y los esquemas.
-
