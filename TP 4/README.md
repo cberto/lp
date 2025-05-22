@@ -10,6 +10,8 @@ El siguiente diagrama representa todas las estructuras del lenguaje:
 
 ![Diagrama Sintáctico LOLCODE](lolcode.png)
 
+![Arbol LOLCODE](arbol.png)
+
 ---
 
 ## 📚 Contenido Representado
