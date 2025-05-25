@@ -1,6 +1,6 @@
-# 🧠 Gramática Sintáctica de LOLCODE
+# Gramática Sintáctica de FROM HERE TO THERE
 
- **gramática  completa** del lenguaje esotérico **LOLCODE**, expresada en notación **GIC, BNF, EBNF y ABNF**, junto con un **diagrama sintáctico visual** que representa todas sus producciones.
+**gramática completa** del lenguaje esotérico **FROM HERE TO THERE**, expresada en notación **GIC, BNF, EBNF y ABNF**, junto con un **diagrama sintáctico visual** que representa todas sus producciones.
 
 ---
 
@@ -8,31 +8,10 @@
 
 El siguiente diagrama representa todas las estructuras del lenguaje:
 
-![Diagrama Sintáctico LOLCODE](lolcode.png)
+![Diagrama Sintáctico](diagrama.png)
 
-![Arbol LOLCODE](arbol.png)
+### Arbol
 
----
-
-## 📚 Contenido Representado
-
-Este diagrama incluye:
-
-- ✅ Estructura general del programa (`HAI` ... `KTHXBYE`)
-- ✅ Comentarios (`BTW`, `OBTW` ... `TLDR`)
-- ✅ Inclusión de librerías (`CAN HAS ... ?`)
-- ✅ Declaración y asignación de variables (`I HAS A`, `R`)
-- ✅ Entrada y salida (`GIMMEH`, `VISIBLE`)
-- ✅ Operaciones aritméticas (`SUM OF`, `PRODUKT OF`, etc.)
-- ✅ Comparaciones (`BOTH SAEM`, `DIFFRINT`, etc.)
-- ✅ Concatenación (`SMOOSH ... AN ... MKAY`)
-- ✅ Conversión de tipos (`MAEK`, `IS NOW A`)
-- ✅ Condicionales (`O RLY?`, `YA RLY`, `NO WAI`, `OIC`)
-- ✅ Switch-case (`WTF?`, `OMG`, `OMGWTF`)
-- ✅ Bucles (`IM IN YR`, `UPPIN`, `TIL`, etc.)
-- ✅ Salida de bucles (`GTFO`)
+![Arbol](arbol.png)
 
 ---
-
-
-
