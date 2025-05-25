@@ -5,133 +5,133 @@ Armar la GIC, BNF, EBNF y ABNF para UN LENGUAJE ESOTÉRICO
 # FROM HERE TO THERE
 
 ## BNF
-
 ```
-<program>       ::= <line>
+<program>     ::= <line>
 
-<line>          ::= <format-line> <endl> <line>
-                 | <format-line> <endl>
+<line>        ::= <format-line> <endl> <line>
+               |  <format-line> <endl>
 
-<format-line>   ::= "FROM " <from> " TO " <to>
+<format-line> ::= "FROM " <from> " TO " <to>
 
-<from>          ::= "LINE"
-                 | "IN"
-                 | <file>
-                 | <int>
-                 | <str>
-                 | <id>
+<from>        ::= "LINE"
+               |  "IN"
+               |  <file>
+               |  <int>
+               |  <str>
+               |  <id>
 
-<to>            ::= "LINE"
-                 | "OUT"
-                 | "ERR"
-                 | <file>
-                 | <int>
-                 | <str>
-                 | <id>
-                 | <varexpr>
+<to>          ::= "LINE"
+               |  "OUT"
+               |  "ERR"
+               |  <file>
+               |  <int>
+               |  <str>
+               |  <id>
+               |  <varexpr>
 
-<file>          ::= "<" <file-fe> <file-se> <file-ne> ">"
+<file>        ::= "<" <file-fe> <file-se> <file-ne> ">"
 
-<file-fe>       ::= "~"
-                 | "."
-                 | <id>
+<file-fe>     ::= "~"
+               |  "."
+               |  <id>
 
-<file-se>       ::= "/" <file-se>
-                 | <id> <file-se>
-                 | <id>
-                 | "/"
+<file-se>     ::= "/" <file-se>
+               |  <id> <file-se>
+               |  <id>
+               |  "/"
 
-<file-ne>       ::= "." <file-se>
-                 | <id> <file-se>
-                 | <id>
-                 | "."
+<file-ne>     ::= "." <file-ne>
+               |  <id> <file-ne>
+               |  <id>
+               |  "."
 
-<int>           ::= <number> <int>
-                 | <number>
+<int>         ::= <number> <int>
+               |  <number>
 
-<str>           ::= <letter> <str>
-                 | <letter>
+<str>         ::= <letter> <str>
+               |  <letter>
 
-<varexpr>       ::= <id> <operator> <id>
-                 | <id> <operator> <int>
+<varexpr>     ::= <id> <operator> <id>
+               |  <id> <operator> <int>
 
-<operator>      ::= "+"
-                 | "-"
-                 | "*"
-                 | "/"
+<operator>    ::= "+"
+               |  "-"
+               |  "*"
+               |  "/"
 
-<letter>        ::= "a" | "b" | ... | "z"
-                 | "A" | "B" | ... | "Z"
+<letter>      ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
 
-<number>        ::= "1" | "2" | ... | "0"
+<number>      ::= "1" | "2" | ... | "0"
 
-<id>            ::= <str> <int>
-                 | "_" <str> <int>
-                 | <str>
-                 | "_" <id>
+<id>          ::= <str> <int>
+               |  "_" <str> <int>
+               |  <str>
+               |  "_" <id>
 
-<endl>          ::= ";"
+<endl>        ::= ";"
 
 
 ```
-
 
 
 ## EBNF
 
 ```
-<program>       ::= { <format-line> <endl> }+
+<program>     ::= <line>
 
-<format-line>   ::= "FROM " <from> " TO " <to>
+<line>        ::= { <format-line> <endl> }+
 
-<from>          ::= "LINE"
-                 | "IN"
-                 | <file>
-                 | <int>
-                 | <str>
-                 | <id>
+<format-line> ::= "FROM " <from> " TO " <to>
 
-<to>            ::= "LINE"
-                 | "OUT"
-                 | "ERR"
-                 | <file>
-                 | <int>
-                 | <str>
-                 | <id>
-                 | <varexpr>
+<from>        ::= "LINE"
+               |  "IN"
+               |  <file>
+               |  <int>
+               |  <str>
+               |  <id>
 
-<file>          ::= "<" <file-fe> <file-se> <file-ne> ">"
+<to>          ::= "LINE"
+               |  "OUT"
+               |  "ERR"
+               |  <file>
+               |  <int>
+               |  <str>
+               |  <id>
+               |  <varexpr>
 
-<file-fe>       ::= "~" | "." | <id>
+<file>        ::= "<" <file-fe> <file-se> <file-ne> ">"
 
-<file-se>       ::= { "/" | <id> }* 
-                 | <id> 
-                 | "/"
+<file-fe>     ::= "~"
+               |  "."
+               |  <id>
 
-<file-ne>       ::= { "." | <id> }*
-                 | <id> 
-                 | "."
+<file-se>     ::= { "/" | <id> }*
 
-<int>           ::= { <number> }+
+<file-ne>     ::= { "." | <id> }*
 
-<str>           ::= { <letter> }+
+<int>         ::= { <int> }+
 
-<varexpr>       ::= <id> <operator> <id>
-                 | <id> <operator> <int>
+<str>         ::= { <str> }+
 
-<operator>      ::= "+" | "-" | "*" | "/"
+<varexpr>     ::= <id> <operator> <id>
+               |  <id> <operator> <int>
 
-<letter>        ::= "a" | "b" | ... | "z"
-                 | "A" | "B" | ... | "Z"
+<operator>    ::= "+"
+               |  "-"
+               |  "*"
+               |  "/"
 
-<number>        ::= "0" | "1" | ... | "9"
+<letter>      ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
 
-<id>            ::= <str> <int>
-                 | "_" <str> <int>
-                 | <str>
-                 | "_" <id>
+<number>      ::= "1" | "2" | ... | "0"
 
-<endl>          ::= ";"
+<id>          ::= <str> <int>
+               |  "_" <str> <int>
+               |  <str>
+               |  "_" <id>
+
+<endl>        ::= ";"
+
 
 ```
 
@@ -139,94 +139,137 @@ Armar la GIC, BNF, EBNF y ABNF para UN LENGUAJE ESOTÉRICO
 ## ABNF
 
 ```
-### Símbolo inicial
-<program>
+<program>     ::= <line>
 
-### Producciones
+<line>        ::= { <format-line> <endl> }
 
-<program>      ::= <line>
+<format-line> ::= "FROM " <from> " TO " <to>
 
-<line>         ::= { <format-line> <endl> }
+<from>        ::= "LINE"
+               |  "IN"
+               |  <file>
+               |  <int>
+               |  <str>
+               |  <id>
 
-<format-line>  ::= "FROM " <from> " TO " <to>
+<to>          ::= "LINE"
+               |  "OUT"
+               |  "ERR"
+               |  <file>
+               |  <int>
+               |  <str>
+               |  <id>
+               |  <varexpr>
 
-<from>         ::= "LINE"
-                | "IN"
-                | <file>
-                | <int>
-                | <str>
-                | <id>
+<file>        ::= "<" <file-fe> <file-se> <file-ne> ">"
 
-<to>           ::= "LINE"
-                | "OUT"
-                | "ERR"
-                | <file>
-                | <int>
-                | <str>
-                | <id>
-                | <varexpr>
+<file-fe>     ::= "~"
+               |  "."
+               |  <id>
 
-<file>         ::= "<" ( <file-fe> | <file-se> | <file-ne> ) ">"
+<file-se>     ::= { "/" <id> | _op }*
 
-<file-fe>      ::= "~"
-                | "."
-                | <id>
+<file-ne>     ::= { "." <id> | _op }*
 
-<file-se>      ::= "/" <file-se>
-                | <id> <file-se>
-                | <id>
-                | "/"
+<int>         ::= { <int> }  (* Recursive form; could be redefined for clarity *)
 
-<file-ne>      ::= "." <file-se>
-                | <id> <file-se>
-                | <id>
-                | "."
+<str>         ::= { <str> }  (* Recursive form; could be redefined for clarity *)
 
-<int>          ::= { <number> }
+<varexpr>     ::= <id> <operator> <id>
+               |  <id> <operator> <int>
 
-<str>          ::= { <letter> }
+<operator>    ::= "+"
+               |  "-"
+               |  "*"
+               |  "/"
 
-<varexpr>      ::= <id> <operator> <id>
-                | <id> <operator> <int>
+<letter>      ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j"
+               |  "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t"
+               |  "u" | "v" | "w" | "x" | "y" | "z"
+               |  "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J"
+               |  "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T"
+               |  "U" | "V" | "W" | "X" | "Y" | "Z"
 
-<operator>     ::= "+"
-                | "-"
-                | "*"
-                | "/"
+<number>      ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
 
-<letter>       ::= uno de: "a"–"z" | "A"–"Z"
+<id>          ::= <str> <int>
+               |  "_" <str> <int>
+               |  <str>
+               |  "_" <id>
 
-<number>       ::= uno de: "0"–"9"
+<endl>        ::= ";"
 
-<id>           ::= <str> <int>
-                | "_" <str> <int>
-                | <str>
-                | "_" <id>
-
-<endl>         ::= ";"
 
 ```
 
 ## GIC
 
 ```
-S -> Li
-Li -> Fl E Li | Fl E
-Fl -> "FROM " F " TO " T
-F -> "LINE" | "IN" | Fi | In | St | Id
-T -> "LINE" | "OUT" | "ERR" | Fi | In | St | Id | Ve
-Fi -> "<" Ff Fs Fn ">"
-Ff -> "~" | "." | Id
-Fs -> "/" Fs | Id Fs | Id | "/"
-Fn -> "." Fs | Id Fs | Id | "."
-In -> N In | N
-St -> L St | L
-Ve -> Id O Id | Id O In
-O -> "+" | "-" | "*" | "/"
-L -> "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
-N -> "1" | "2" | ... | "0"
-Id -> St In | "_" St In | St | "_" Id
-E -> ";"
+S   ::= Li
+
+Li  ::= Fl E Li
+     |  Fl E
+
+Fl  ::= "FROM " F " TO " T
+
+F   ::= "LINE"
+     |  "IN"
+     |  Fi
+     |  In
+     |  St
+     |  Id
+
+T   ::= "LINE"
+     |  "OUT"
+     |  "ERR"
+     |  Fi
+     |  In
+     |  St
+     |  Id
+     |  Ve
+
+Fi  ::= "<" Ff Fs Fn ">"
+
+Ff  ::= "~"
+     |  "."
+     |  Id
+
+Fs  ::= "/" Fs
+     |  Id Fs
+     |  Id
+     |  "/"
+
+Fn  ::= "." Fn
+     |  Id Fn
+     |  Id
+     |  "."
+
+In  ::= N In
+     |  N
+
+St  ::= L St
+     |  L
+
+Ve  ::= Id O Id
+     |  Id O In
+
+O   ::= "+"
+     |  "-"
+     |  "*"
+     |  "/"
+
+L   ::= "a" | "b" | ... | "z"
+     |  "A" | "B" | ... | "Z"
+
+N   ::= "1" | "2" | ... | "0"
+
+Id  ::= St In
+     |  "_" St In
+     |  St
+     |  "_" Id
+
+E   ::= ";"
+
 ```
 
 
