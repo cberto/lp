@@ -167,7 +167,7 @@ $$
 
 <condicional> ::= si (<exp>) { <contenido> }
 
-<exp> ::= <item_exp> <operador> <exp> | <operadorLogUn> <item_exp> | <item_exp> <operador> <item_exp> | <operadorLogUn> <item_exp> <operador> <exp> | <item_exp>
+<exp> ::= <item_exp> <operador> <exp> | <opLogicoUn> <item_exp> | <item_exp> <operador> <item_exp> | <opLogicoUn> <item_exp> <operador> <exp> | <item_exp>
 
 <item_exp> ::= <numero> | <identificador> | <logico>
 
