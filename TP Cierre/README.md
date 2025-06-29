@@ -1,5 +1,10 @@
 # Lenguaje de Programación - Especificación
 
+
+### 🎯 Objetivo
+MiLenguaje es un lenguaje de programación didáctico, simple y estructurado, orientado a representar construcciones básicas como funciones, asignaciones, bucles, condicionales y expresiones con tipos estáticos.
+
+
 ## Tipos de Datos
 
 `<tipo>` = `cad` | `num` | `log`
@@ -10,7 +15,7 @@ Los tipos son:
 - **log**: booleano
 
 **Ejemplos:**
-- `cad`: `"Hola"`
+- `cad`: `"a"`
 - `num`: `10`
 - `log`: `ver`
 
@@ -45,49 +50,31 @@ oper_comparacion = < | > | <= | >= | == | !=
 
 ## Iteraciones
 
-### Bucle For
+### Bucle 
 ```
-for num: bucle (<var> = <num>; <condicion>; inc | dec <var>) {}
+ bucle (<var> = <num>; <condicion>; inc | dec <var>) {}
 ```
 
 **Ejemplo:**
 ```
-for num: bucle (i = 0; i < 10; inc i) {
-  funncionB(i)
+ bucle (i = 0; i < 10; inc i) {
+  e(i)
 }
 ```
 
 ## Condicionales
 
-### If
+
 ```
-if: Si (<expr>) {}
+ Si (<expr>) {
+  <contenido>
+ }
 ```
 
 ## Funciones
 
 El valor por defecto de un parámetro puede estar o no definido y los parámetros pueden no estar definidos.
 
-**Ejemplo:**
-```
-funcion test() {
-  funncionB("Hola")
-}
-```
-
-### Función sin Retorno
-```
-funcion <identificador> (parametro1: <tipo> = <cad | num | log>, ...,<tipo> parametroN) {
-  <content_func>
-}
-```
-
-**Ejemplo:**
-```
-funcion test(num: num = 10) {
-  funncionB(num)
-}
-```
 
 ### Función con Retorno
 ```
@@ -99,11 +86,11 @@ funcion <identificador>: <tipo> (parametro1: <tipo> = <cad | num | log>, ...,<ti
 
 **Ejemplo:**
 ```
-funcion test:num(num: num = 10) {
-  funncionB(num)
+funcion ei:num(num: num = 10) {
+  a(num)
   retorno 1
 }
-test(5)
+ei(5)
 ```
 
 ## Asignación
@@ -115,7 +102,7 @@ test(5)
 **Ejemplos:**
 ```
 test: num = 10
-test2: cad = "Hola"
+test2: cad = "aei"
 test3: log = ver
 ```
 
@@ -129,8 +116,8 @@ $ <contenido> $$
 ```
 $ 
 
-funcion mostrar() {
-  print("Hola")   // llamada al sistema para mostrar un mensaje en pantalla
+funcion ao() {
+ retorno print("oa")   // llamada al sistema para mostrar un mensaje en pantalla
 }
 
 $$
@@ -139,56 +126,106 @@ $$
 ## BNF
 
 ```bnf
-<prog> ::= $ <contenido> $$
 
-<contenido> ::= <funciones> | <bucle> | <condicional> | <variable> | <exp> | <print> | λ
+<programa>::= $ <vacio_contenido> $$
+<contenido>::=  <bucle> | <condicional> | <retornable>|  <variable>
+<retornable>::= <funciones>  | <exp> | <print>| <inv_funcion>
+<vacio_contenido>::= <contenido> | λ 
+<print>::= print(<exp>)
 
-<print> ::= print(<exp>)
+<funciones>::= funcion <identificador>: <tipo> (<param>) {<vacio_contenido> retorno <retornable>}
+<param>::= <identificador> : <tipo>,  <param> | <variable>, <param> | <identificador> : <tipo>  | <variable>
+<inv_funcion> ::= <identificador>() |  <identificador>(<argumento>)
 
-<variable> ::= <identificador>: <tipo> = <item_exp>
+<bucle>::=  bucle ( <identificador> = <num>; <condicionBucle>; <direccion> <identificador>) { <contenido>}
+<condicionBucle>::= <identificador> <opComparacion> <num>
 
+<condicional>::= Si (<retornable>) { <contenido> }
+
+<exp>::= 
+ <item_exp> <operador> <retornable> |
+    <item_exp> <operador> <retornable> <exp>|
+    <item_exp> | 
+    <opLogicoUn><item_exp> <operador><retornable> |
+    <opLogicoUn><item_exp> <operador><retornable><exp> |
+    <opLogicoUn><item_exp> |
+     <identificador> <operador> <item_exp> |
+    <identificador> <operador> <item_exp><exp> |
+    <identificador>
+
+
+<variable>::= <identificador>:  <tipo> = <retornable> 
+<asignar>::= <retornable>
+<argumento> ::= <retornable>, <argumento> | <retornable>
+<identificador>::= <letra> <identificador> | <letra>
+
+<cad>::= "<cad_contenido>"
+<cad_contenido>::= <letra> <cad_contenido> | <cad_contenido>
+
+
+<item_exp> ::= <numero> | <cad> | <logico>
+<operador> ::= <opArit> | <opLogicoBin>  | <opComparacion>
+<numero> ::= <num><numero> | <num>
+<direccion>::= inc | dec
 <tipo> ::= cad | num | log
+<opArit> ::= + | - | / | *
+<opLogicoBin>::= yy | oo
+<opLogicoUn>::= no
+<opComparacion>::= < | > | <= | >= | == | !=
+<logico>::=   ver | fal
+<letra>::=  a|e |i | o|u
+<num>::= 0 |1 |2 |3 |4 |5 |6 |7 |8 |9
 
-<opArit> ::= + | - | * | /
-
-<opLogicoBin> ::= yy | oo
-
-<opLogicoUn> ::= no
-
-<opComparacion> ::= < | > | <= | >= | == | !=
-
-<bucle> ::= bucle ( <identificador> = <num>; <condicionBucle>; <direccion> <identificador>) { <contenido> }
-
-<direccion> ::= inc | dec
-
-<identificador> ::= <letra> <identificador> | <letra>
-
-<condicionBucle> ::= <identificador> <opComparacion> <num>
-
-<condicional> ::= si (<exp>) { <contenido> }
-
-<exp> ::= <item_exp> <operador> <exp> | <opLogicoUn> <item_exp> | <item_exp> <operador> <item_exp> | <opLogicoUn> <item_exp> <operador> <exp> | <item_exp>
-
-<item_exp> ::= <numero> | <identificador> | <logico>
-
-<operador> ::= <opArit> | <opLogicoBin> | <opComparacion>
-
-<numero> ::= <num> <numero> | <num>
-
-<logico> ::= ver | fal
-
-<letra> ::= a | e | i | o | u
-
-<num> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-
-<funciones> ::= <conRetorno> | <sinRetorno>
-
-<conRetorno> ::= funcion <identificador>: <tipo> (<param>) { <contenido> retorno <contenido> }
-
-<sinRetorno> ::= funcion <identificador> (<param>) { <contenido> }
-
-<param> ::= <identificador>: <tipo>, <param> | <variable>, <param> | <identificador>: <tipo> | <variable>
 ```
+
+**Ejemplo:**
+```
+$ 
+
+
+funcion ae: num() {
+
+ e: num = 5
+
+a: num = 0
+
+si (e > 0){
+  
+ bucle( i=0; i < 3; inc i) {
+  a: num = e
+  }
+}
+
+retorno a 
+}
+
+print(ae())
+
+
+
+
+$
+
+funcion ae: num(num: num = 3) {
+  suma: num = 0
+
+  si (num > 0) {
+    bucle(i = 0; i < num; inc i) {
+      suma: num = suma + i
+    }
+  }
+
+  retorno suma
+}
+
+print(ae(5))
+
+$$
+
+
+
+```
+
 
 ### Notas importantes:
 
@@ -197,3 +234,46 @@ $$
 - Solo tiene disponibles las vocales
 - Acepta números de 0 a 9
 - For solo hace loop sobre números
+- Los TIPOS manejan todo tipo de expresiones
+- Todos mis contenidos tienen retorno
+- No hay asignacion vacia 
+
+
+
+## 🔧 Características
+
+| **Aspecto**                          | **Descripción**                                                                 |
+|--------------------------------------|----------------------------------------------------------------------------------|
+| **Paradigma**                        | Imperativo, estructurado                                                        |
+| **Tipos de datos**                   | Primitivos: `cad`, `num`, `log`                                                 |
+| **Tipado**                           | Estático, fuerte (sin coerción implícita)                                       |
+| **Inferencia de tipos**             | No (siempre se debe declarar el tipo al declarar una variable)                 |
+| **Asignación**                       | Sí                                                                              |
+| **Nivel de abstracción**            | Bajo-medio (no soporta colecciones ni objetos, solo tipos básicos)             |
+| **Independencia de la máquina**     | Sí (modelo pseudocódigo sin dependencia del sistema)                           |
+| **Orientación a objetos**           | No                                                                              |
+| **Sensibilidad a mayúsculas**       | No se especifica, pero se asume **no sensible** (solo letras vocales permitidas) |
+| **Esotérico**                       | Sí (solo acepta vocales como identificadores, tipos extraños de operaciones)   |
+| **Extensibilidad**                  | No (no permite definir nuevos tipos)                                            |
+| **Modularidad**                     | Parcial (funciones sí, módulos no)                                              |
+| **Concurrencia**                    | No                                                                              |
+| **Gestión de errores / excepciones**| No contemplada                                                                 |
+| **Gestión de memoria**              | No modelado                                                                    |
+| **Modelo de ejecución**             | Interpretado (pseudocódigo, sin compilación)                                   |
+| **Entrada de datos**                | No (no hay funciones explícitas de entrada)                                    |
+
+## 🔁 Control de Flujo
+
+| **Mecanismo**                            | **Soportado**                           |
+|------------------------------------------|------------------------------------------|
+| Secuencial                                | Sí                                       |
+| Condicional                               | Sí (`si`)                                |
+| Iterativo                                 | Sí (`bucle`)                             |
+| Recursividad                              | Sí (permitida en funciones)              |
+| Pasaje de parámetros                      | Por valor                                |
+| Valores por defecto en parámetros         | Sí                                       |
+| Funciones con retorno                     | Sí                                       |
+| Saltos incondicionales (`goto`)          | No                                       |
+| Saltos controlados (`break`, `continue`) | No                                       |
+| Control estructurado                      | Sí                                       |
+| Control no estructurado                   | No                                       |
