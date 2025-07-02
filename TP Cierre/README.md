@@ -128,34 +128,34 @@ $$
 ```bnf
 
 <programa>::= $ <vacio_contenido> $$
-<contenido>::=  <bucle> | <condicional> | <retornable>|  <variable>
-<retornable>::= <funciones>  | <exp> | <print>| <inv_funcion>
 <vacio_contenido>::= <contenido> | λ 
+<contenido>::=  <bucle> | <condicional> | <retornable>|  <variable> | <asignar>
+<retornable>::= <funciones>  | <exp> | <print>| <inv_funcion>
 <print>::= print(<exp>)
 
 <funciones>::= funcion <identificador>: <tipo> (<param>) {<vacio_contenido> retorno <retornable>}
 <param>::= <identificador> : <tipo>,  <param> | <variable>, <param> | <identificador> : <tipo>  | <variable>
 <inv_funcion> ::= <identificador>() |  <identificador>(<argumento>)
 
-<bucle>::=  bucle ( <identificador> = <num>; <condicionBucle>; <direccion> <identificador>) { <contenido>}
+<bucle>::=  bucle ( <identificador> = <num>; <condicionBucle>; <direccion> <identificador>) { <vacio_contenido>}
 <condicionBucle>::= <identificador> <opComparacion> <num>
 
-<condicional>::= Si (<retornable>) { <contenido> }
+<condicional>::= Si (<retornable>) { <vacio_contenido> }
 
 <exp>::= 
- <item_exp> <operador> <retornable> |
-    <item_exp> <operador> <retornable> <exp>|
-    <item_exp> | 
-    <opLogicoUn><item_exp> <operador><retornable> |
-    <opLogicoUn><item_exp> <operador><retornable><exp> |
+ <retornable> <operador> <retornable> |
+    <retornable>  <operador>  <exp>|
+    <retornable> | 
+    <opLogicoUn> <retornable> <operador><retornable> |
+    <opLogicoUn>< <retornable><operador><exp> |
     <opLogicoUn><item_exp> |
-     <identificador> <operador> <item_exp> |
-    <identificador> <operador> <item_exp><exp> |
+     <identificador> <operador> <retornable> |
+    <identificador> <operador><exp> |
     <identificador>
 
 
 <variable>::= <identificador>:  <tipo> = <retornable> 
-<asignar>::= <retornable>
+<asignar>::= <identificador> = <retornable>
 <argumento> ::= <retornable>, <argumento> | <retornable>
 <identificador>::= <letra> <identificador> | <letra>
 
