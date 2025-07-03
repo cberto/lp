@@ -128,9 +128,9 @@ $$
 ```bnf
 
 <programa>::= $ <vacio_contenido> $$
-<vacio_contenido>::= <contenido> | λ 
+<vacio_contenido>::= <contenido> | λ | <contenido> <contenido>
 <contenido>::=  <bucle> | <condicional> | <retornable>|  <variable> | <asignar>
-<retornable>::= <funciones>  | <exp> | <print>| <inv_funcion>
+<retornable>::= <funciones>  | <exp> | <print>| <inv_funcion> | <item_exp>
 <print>::= print(<exp>)
 
 <funciones>::= funcion <identificador>: <tipo> (<param>) {<vacio_contenido> retorno <retornable>}
@@ -291,7 +291,7 @@ $$
 | **Almacenamiento**      | Estático (tipado explícito)                                               |
 | **Generación**          | Cuarta                                                                    |
 | **Manera de Abordar**   | Operativo                                                                 |
-| **Lugar de Ejecución**  | Simulado / Máquina virtual                                                |
+                                             |
 | **Concurrencia**        | No                                                                         |
 | **Interactividad**      | No interactivo (sin entrada de datos)                                     |
 | **Realización Visual**  | Textual                                                                   |
