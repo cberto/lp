@@ -277,3 +277,24 @@ $$
 | Saltos controlados (`break`, `continue`) | No                                       |
 | Control estructurado                      | Sí                                       |
 | Control no estructurado                   | No                                       |
+
+
+## 📊 Ficha Técnica de MiLenguaje
+
+| **Campo**               | **Valor**                                                                 |
+|-------------------------|---------------------------------------------------------------------------|
+| **Nombre**              | MiLenguaje                                                                |
+| **Paradigma**           | Imperativo, Estructurado                                                  |
+| **Nivel**               | Bajo-medio                                                                |
+| **Dominio**             | Específico                                                                |
+| **Traductor**           | Interpretado                                                              |
+| **Almacenamiento**      | Estático (tipado explícito)                                               |
+| **Generación**          | Cuarta                                                                    |
+| **Manera de Abordar**   | Operativo                                                                 |
+| **Lugar de Ejecución**  | Simulado / Máquina virtual                                                |
+| **Concurrencia**        | No                                                                         |
+| **Interactividad**      | No interactivo (sin entrada de datos)                                     |
+| **Realización Visual**  | Textual                                                                   |
+| **Predicción Estado**   | Determinista                                                              |
+| **Características**     | Sintaxis restringida, tipos estáticos, esotérico, retorno obligatorio     |
+| **Dato Extra**          | Lenguaje esotérico diseñado para análisis formal y uso didáctico          |
