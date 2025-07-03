@@ -160,7 +160,7 @@ $$
 <identificador>::= <letra> <identificador> | <letra>
 
 <cad>::= "<cad_contenido>"
-<cad_contenido>::= <letra> <cad_contenido> | <cad_contenido>
+<cad_contenido>::= <letra> <cad_contenido> | <letra>
 
 
 <item_exp> ::= <numero> | <cad> | <logico>
